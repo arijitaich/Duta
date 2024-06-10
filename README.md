@@ -69,7 +69,8 @@ this-repository/
 - `templates/index.html`: The primary rendering html file.
 - `README.md`: This file.
 
-## WARNING: Set the ports inside app.py to your preferred port number before running the app.py file.
+## WARNING: 
+Set the ports inside app.py to your preferred port number before running the app.py file.
 
 ## License
 
