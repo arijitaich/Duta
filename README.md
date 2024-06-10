@@ -1,7 +1,4 @@
-Here's a `README.md` file for the Duta Flask application:
-
-
-# Flask Web Application
+# IoT Multi Device Monitoring Flask Web Application
 
 This is a simple Flask web application that renders an HTML template.
 
