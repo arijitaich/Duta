@@ -23,8 +23,8 @@ Arijit Aich
 
 1. Clone the repository:
    sh
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone this-repository
+   cd this-repository
    
 
 2. Create a virtual environment:
@@ -60,7 +60,7 @@ Arijit Aich
 ## File Structure
 
 
-your-repository/
+this-repository/
 │
 ├── app.py
 ├── requirements.txt
@@ -72,6 +72,7 @@ your-repository/
 - `app.py`: The main Flask application file.
 - `requirements.txt`: A file listing the Python dependencies.
 - `templates/`: A directory containing HTML templates.
+- `templates/index.html`: The primary rendering html file.
 - `README.md`: This file.
 
 ## License
