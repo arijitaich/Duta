@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmatrix - Connect Your Agri IoT Device</title>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Albert Sans', sans-serif;
+            background-color: #0a0a0a; /* Very dark background */
+            color: #fff;
+        }
+        .header-bg {
+            background-color: #0d47a1; /* Deep blue */
+        }
+        .card {
+            background-color: #1e1e1e;
+            border: 2px solid #0b84a5; /* Bright border for TRON effect */
+            border-radius: 100%;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0 auto 30px;
+            box-shadow: 0 0 15px #0b84a5; /* Neon glow effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px #29b6f6; /* Enhanced neon glow on hover */
+        }
+        .card i {
+            margin-bottom: 15px;
+            color: #29b6f6; /* TRON blue for icons */
+            font-size: 3rem;
+        }
+        .card p {
+            font-size: 1.1rem;
+            color: #a0a0a0; /* Light grey for text */
+            margin: 0;
+        }
+
+        .card svg {
+            fill: #29b6f6; /* TRON blue for SVG icon */
+            height: 50px;
+            width: auto;
+            margin-bottom: 15px;
+        }
+        /* Additional custom styles */
+
+
+
+        .form-container {
+    background-color: #242424; /* Dark gray background */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.form-title {
+    color: #29b6f6; /* TRON blue for title */
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid #0b84a5;
+    background-color: #1e1e1e;
+    color: #fff;
+    font-size: 16px;
+}
+
+.fieldset-title {
+    color: #29b6f6;
+}
+
+.submit-button {
+    background-color: #0b84a5;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #29b6f6;
+}
+
+
+
+
+
+
+
+.info-container {
+    background-color: #242424; /* Dark gray background */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.info-title, .sub-title {
+    color: #29b6f6; /* TRON blue for titles */
+}
+
+.generated-key, .json-display, .url-format {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.json-display, .url-format {
+    overflow-x: auto;
+}
+
+
+
+
+
+
+
+.listening-container {
+    background-color: #242424; /* Dark gray background */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 3%;
+}
+
+.listening-title {
+    color: #29b6f6; /* TRON blue for titles */
+}
+
+.status-indicator {
+    width: 20px;
+    height: 20px;
+}
+
+.status-text {
+    vertical-align: middle;
+}
+
+.data-display {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    min-height: 100px; /* Adjust as needed */
+}
+
+
+
+
+
+
+
+
+/* Add styles for chart selection and display sections */
+.chart-selection-container, .chart-display-container {
+    background-color: #242424; /* Dark gray background */
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #0b84a5;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.generate-chart-button {
+    background-color: #0b84a5;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.generate-chart-button:hover {
+    background-color: #29b6f6;
+}
+
+
+
+
+
+
+
+
+
+.chart-dashboard {
+    background-color: #242424;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.chart-container {
+    background-color: #1e1e1e;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.delete-chart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.charts-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 100%; /* Full width */
+    margin-bottom: 3%;
+}
+
+.chart-selection-container {
+    flex: 0 0 100%; /* Full width on small screens */
+    max-width: 100%; /* Full width on small screens */
+    margin: 0 10px;
+}
+
+.chart-dashboard {
+    flex: 0 0 100%; /* Full width on small screens */
+    max-width: 100%; /* Full width on small screens */
+    margin: 0 10px;
+}
+
+@media (min-width: 768px) { /* Adjust to match Tailwind's 'md' breakpoint */
+    .charts-flex-container {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 4px;
+    }
+
+    .chart-selection-container {
+        grid-column: span 4; /* Takes up 4 out of 12 columns */
+    }
+
+    .chart-dashboard {
+        grid-column: span 8; /* Takes up 8 out of 12 columns */
+    }
+}
+
+
+
+#chartsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+.chart-container {
+    /* Other styles remain unchanged */
+    width: 100%; /* Ensure the chart container fills the grid area */
+}
+    </style>
+</head>
+<body>
+    <header class="header-bg p-4 text-center" >
+        <h1 class="text-3xl font-bold">Welcome to Farmatrix</h1>
+    </header>
+
+    <div id="deviceSelectionContainer" class="container mx-auto py-10 text-center" >
+        <p class="mb-8 text-xl">Select your Agri IoT Device:</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+            <!-- Full Range of Device Options with TRON Theme -->
+            <!-- Temperature Sensor -->
+            <div class="card">
+                <i class="fas fa-thermometer-half"></i>
+                <p>Temperature Sensor</p>
+            </div>
+            <!-- Moisture Sensor -->
+            <div class="card">
+                <i class="fas fa-tint"></i>
+                <p>Moisture Sensor</p>
+            </div>
+            <!-- pH Meter -->
+            <div class="card">
+                <i class="fas fa-vial"></i>
+                <p>pH Meter</p>
+            </div>
+            <!-- Light Sensor -->
+            <div class="card">
+                <i class="fas fa-sun"></i>
+                <p>Light Sensor</p>
+            </div>
+            <!-- Weather Station -->
+            <div class="card">
+                <i class="fas fa-cloud-sun-rain"></i>
+                <p>Weather Station</p>
+            </div>
+            <!-- Agricultural Drone -->
+            <div class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.83 77.5" x="0px" y="0px">
+                    <g data-name="Layer 2"><g data-name="Layer 1"><g data-name="Agriculture Drone"><path d="M32.71,28H28.12a11.78,11.78,0,0,1-10.6-6.55l1.79-.9A9.8,9.8,0,0,0,28.12,26h4.59a9.8,9.8,0,0,0,8.81-5.45l1.79.9A11.8,11.8,0,0,1,32.71,28Z"/><path d="M41.48,17.35l-2-5.4A3,3,0,0,0,36.64,10H24.19A3,3,0,0,0,21.38,12l-2,5.4-1.87-.7,2-5.41A5,5,0,0,1,24.19,8H36.64a5,5,0,0,1,4.68,3.24l2,5.41Z"/><path d="M57,22H3.8L2.3,19l1.5-3H57l1.5,3ZM5,20H55.8l.5-1-.5-1H5l-.5,1Z"/><rect x="48.41" y="9" width="2" height="8"/><rect x="52.41" y="9" width="2" height="8"/><path d="M54.41,5h-2V3a1,1,0,0,0-2,0V5h-2V3a3,3,0,0,1,6,0Z"/><path d="M57.83,10H45L42,7l3-3H57.83l3,3Zm-12-2H57l1-1L57,6H45.83l-1,1Z"/><rect x="6.41" y="9" width="2" height="8"/><rect x="10.41" y="9" width="2" height="8"/><path d="M12.41,5h-2V3a1,1,0,0,0-2,0V5h-2V3a3,3,0,0,1,6,0Z"/><path d="M15.83,10H3L0,7,3,4H15.83l3,3Zm-12-2H15l1-1L15,6H3.83l-1,1Z"/><rect x="49.77" y="20.27" width="2" height="9.53" transform="translate(-5.36 32.37) rotate(-33.69)"/><rect x="43.9" y="20.34" width="2" height="9.39" transform="translate(-6.42 27.96) rotate(-32.41)"/><path d="M54.41,34h-8a2,2,0,0,1-2-2V30a2,2,0,0,1,2-2h8a2,2,0,0,1,2,2v2A2,2,0,0,1,54.41,34Zm-8-4v2h8V30Z"/><rect x="5.27" y="24" width="9.61" height="2" transform="matrix(0.55, -0.83, 0.83, 0.55, -16.31, 19.52)"/><rect x="11.23" y="24.03" width="9.39" height="2" transform="translate(-13.74 25.07) rotate(-57.6)"/><path d="M14.41,34h-8a2,2,0,0,1-2-2V30a2,2,0,0,1,2-2h8a2,2,0,0,1,2,2v2A2,2,0,0,1,14.41,34Zm-8-4v2h8V30Z"/><path d="M30.41,14a5,5,0,0,1-5-5h2a3,3,0,1,0,6,0h2A5,5,0,0,1,30.41,14Z"/><rect x="31.41" y="27" width="2" height="6"/><rect x="27.41" y="27" width="2" height="6"/><path d="M30.41,62a7,7,0,0,1-5.6-11.2l5.6-7.47L36,50.8A7,7,0,0,1,30.41,62Zm0-15.33-4,5.33a5,5,0,0,0,4,8,5,5,0,0,0,4-8Z"/><path d="M51.5,51.09c-.38-.5-.79-1-1.21-1.47l1.49-1.34c.46.52.91,1.06,1.32,1.61Zm-42.15,0L7.76,49.85c.41-.55.86-1.08,1.31-1.6l1.49,1.34C10.14,50.06,9.73,50.55,9.35,51.06ZM49,48.25c-.46-.43-.94-.86-1.44-1.25l1.25-1.56c.54.43,1.07.88,1.57,1.36Zm-37.07,0-1.37-1.46c.5-.47,1-.92,1.57-1.36L13.33,47C12.83,47.38,12.35,47.8,11.89,48.23ZM46,45.87c-.53-.35-1.08-.68-1.63-1l1-1.75c.6.33,1.2.7,1.77,1.08Zm-31.12,0-1.11-1.66c.57-.38,1.17-.75,1.77-1.08l1,1.75C16,45.17,15.4,45.5,14.87,45.85ZM42.66,44c-.58-.26-1.18-.5-1.77-.71l.67-1.89c.64.24,1.29.49,1.92.78ZM18.2,44l-.82-1.83c.63-.28,1.28-.54,1.93-.77L20,43.3C19.38,43.51,18.78,43.75,18.2,44Zm20.87-1.26c-.61-.16-1.24-.3-1.86-.41l.34-2c.68.12,1.36.27,2,.45Zm-17.27,0-.51-1.94c.67-.17,1.35-.32,2-.44l.34,2C23,42.44,22.41,42.58,21.8,42.74Zm13.52-.65C34.68,42,34,42,33.42,42V40c.68,0,1.37,0,2.07.1Zm-9.77,0-.18-2c.68-.06,1.38-.1,2.08-.1v2C26.81,42,26.17,42,25.55,42.09ZM31.43,42h-2V40h2Z"/><path d="M55,49.05c-.38-.52-.78-1-1.19-1.53l1.53-1.28c.45.52.87,1.07,1.28,1.63Zm-2.48-3c-.46-.46-.93-.91-1.4-1.33l1.33-1.5q.77.69,1.5,1.44Zm-2.89-2.56c-.52-.4-1.05-.77-1.58-1.12l1.1-1.67c.57.37,1.14.78,1.69,1.2Zm-3.23-2.12c-.55-.31-1.13-.61-1.72-.89l.85-1.81c.63.3,1.25.62,1.84.95Zm-3.5-1.64q-.91-.35-1.83-.63l.58-1.91c.65.19,1.31.42,2,.67Zm-3.7-1.12c-.63-.14-1.27-.26-1.9-.36l.29-2c.68.1,1.37.23,2.05.38Z"/><path d="M5.85,49.06,4.23,47.89c.41-.56.84-1.11,1.28-1.64L7,47.54C6.63,48,6.23,48.54,5.85,49.06Zm2.49-3L6.91,44.71c.48-.5,1-1,1.5-1.44l1.33,1.5C9.26,45.19,8.79,45.64,8.34,46.1Zm2.89-2.56L10,42c.55-.42,1.12-.83,1.7-1.2l1.09,1.67C12.27,42.77,11.74,43.15,11.23,43.54Zm3.23-2.13-1-1.75c.61-.33,1.23-.65,1.85-.94l.85,1.81C15.6,40.8,15,41.1,14.46,41.41ZM18,39.77l-.72-1.86c.64-.25,1.31-.48,2-.68l.57,1.92C19.17,39.33,18.56,39.54,18,39.77Zm3.69-1.12-.44-1.95c.67-.15,1.36-.28,2.05-.38l.29,2C22.92,38.39,22.28,38.51,21.65,38.65Z"/><path d="M36.41,38h-12V35a3,3,0,0,1,3-3h6a3,3,0,0,1,3,3Zm-10-2h8V35a1,1,0,0,0-1-1h-6a1,1,0,0,0-1,1Z"/><path d="M46.41,62a4,4,0,0,1-4-4,4.07,4.07,0,0,1,.8-2.4l3.2-4.27,3.2,4.27a4,4,0,0,1-3.2,6.4Zm0-7.33-1.6,2.13a2.06,2.06,0,0,0-.4,1.2A2,2,0,1,0,48,56.8Z"/><path d="M17.41,60a4,4,0,0,1-4-4,4.07,4.07,0,0,1,.8-2.4l3.2-4.27,3.2,4.27a4,4,0,0,1-3.2,6.4Zm0-7.33-1.6,2.13a2.06,2.06,0,0,0-.4,1.2A2,2,0,1,0,19,54.8Z"/></g></g></g></svg>
+                <p>Agricultural Drone</p>
+            </div>
+            <!-- Smart Irrigation -->
+            <div class="card">
+                <i class="fas fa-faucet"></i>
+                <p>Smart Irrigation</p>
+            </div>
+            <!-- Smart Farm Equipment -->
+            <div class="card">
+                <i class="fas fa-tractor"></i>
+                <p>Smart Farm<br>Equipment</p>
+            </div>
+            <!-- Plant Growth Monitor -->
+            <div class="card">
+                <i class="fas fa-seedling"></i>
+                <p>Plant Growth<br>Monitor</p>
+            </div>
+            <!-- Water Quality Sensor -->
+            <div class="card">
+                <i class="fas fa-water"></i>
+                <p>Water Quality<br>Sensor</p>
+            </div>
+            <!-- Wind Speed Sensor -->
+            <div class="card">
+                <i class="fas fa-wind"></i>
+                <p>Wind Speed<br>Sensor</p>
+            </div>
+            <!-- Vegetation Management -->
+            <div class="card">
+                <i class="fas fa-leaf"></i>
+                <p>Vegetation Management</p>
+            </div>
+            <!-- Pest Control -->
+            <div class="card">
+                <i class="fas fa-bug"></i>
+                <p>Pest Control</p>
+            </div>
+            <!-- Remote Sensing -->
+            <div class="card">
+                <i class="fas fa-satellite-dish"></i>
+                <p>Remote Sensing</p>
+            </div>
+            <!-- GIS Mapping -->
+            <div class="card">
+                <i class="fas fa-map-marked-alt"></i>
+                <p>GIS Mapping</p>
+            </div>
+            <!-- Yield Monitoring -->
+            <div class="card">
+                <i class="fas fa-balance-scale"></i>
+                <p>Yield Monitoring</p>
+            </div>
+            <!-- Climate Control -->
+            <div class="card">
+                <i class="fas fa-temperature-high"></i>
+                <p>Climate Control</p>
+            </div>
+            <!-- Additional device options can be added here -->
+        </div>
+    </div>
+
+
+    <div id="device_info" class="form-container mx-auto py-10" style="margin-top: 6%;" hidden>
+        <h2 class="form-title text-3xl font-bold text-center mb-8">Device Registration Form</h2>
+        <form action="/submit-device-details" method="post" class="form-body">
+            <fieldset class="mb-6">
+                <legend class="fieldset-title text-xl font-semibold mb-4">Basic Information</legend>
+                <label for="deviceName" class="form-label">Device Name:</label>
+                <input type="text" id="deviceName" name="deviceName" class="form-input mb-4">
+    
+                <label for="deviceId" class="form-label">Device ID:</label>
+                <input type="text" id="deviceId" name="deviceId" class="form-input mb-4">
+            </fieldset>
+    
+            <fieldset class="mb-6">
+                <legend class="fieldset-title text-xl font-semibold mb-4">Location Details</legend>
+                <label for="location" class="form-label">Installation Location:</label>
+                <input type="text" id="location" name="location" class="form-input mb-4">
+            </fieldset>
+    
+            <fieldset>
+                <legend class="fieldset-title text-xl font-semibold mb-4">Additional Information</legend>
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" class="form-input mb-4"></textarea>
+            </fieldset>
+    
+            <button type="button" class="submit-button" onclick="document.getElementById('device_info').style.display = 'none'; document.getElementById('device_config').style.display = 'block';">Register Device</button>
+        </form>
+    </div>
+
+
+
+
+    <div id="device_config" class="info-container mx-auto py-10" style="margin-top: 6%;" hidden >
+        <h2 class="info-title text-3xl font-bold text-center mb-8">Device Configuration Details</h2>
+        
+        <div class="device-key mb-6">
+            <h3 class="sub-title text-2xl font-semibold mb-4">Your Device Key</h3>
+            <p id="generatedKey" class="generated-key bg-gray-700 p-3 rounded-lg font-mono"></p>
+        </div>
+    
+        <div class="sample-json mb-6">
+            <h3 class="sub-title text-2xl font-semibold mb-4">Sample JSON Payload</h3>
+            <pre id="sampleJson" class="json-display bg-gray-700 p-3 rounded-lg font-mono"></pre>
+        </div>
+    
+        <div class="http-url" >
+            <h3 class="sub-title text-2xl font-semibold mb-4">HTTP URL Format</h3>
+            <p class="url-format bg-gray-700 p-3 rounded-lg font-mono">https://yourdomain.com/api/post?deviceKey=<span id="urlDeviceKey"></span></p>
+        </div>
+
+        <button type="button" class="submit-button" style="margin-top: 3%;" onclick="document.getElementById('device_config').style.display = 'none'; document.getElementById('device_listener').style.display = 'block'; trigger_data();">Save Device Configuration</button>
+    </div>
+
+
+
+
+
+    <div id="device_listener" class="listening-container mx-auto py-10" style="margin-top: 6%;" hidden >
+        <h2 class="listening-title text-3xl font-bold text-center mb-8" >Listening For Device Data</h2>
+        
+        <div class="server-status mb-6">
+            <h3 class="sub-title text-2xl font-semibold mb-4">Server Status</h3>
+            <div id="serverStatus" class="status-indicator bg-red-500 p-3 rounded-full inline-block"></div>
+            <p id="statusText" class="status-text ml-3 inline-block">Waiting for data...</p>
+        </div>
+    
+        <div class="received-data">
+            <h3 class="sub-title text-2xl font-semibold mb-4">Received Data</h3>
+            <pre id="receivedData" class="data-display bg-gray-700 p-3 rounded-lg font-mono">No data received yet.</pre>
+        </div>
+
+        <button type="button" id="confirm_device_data_button" class="submit-button" style="margin-top: 3%;"  hidden onclick="document.getElementById('device_listener').style.display = 'none'; document.getElementById('device_charting').style.display = 'block'; document.getElementById('device_visuals').style.display = 'block';">Confirm Device Data</button>
+    </div>
+
+
+
+
+
+   
+    
+    
+
+    
+
+    <div class="charts-flex-container" style="margin-top: 6%;" >
+        <div class="chart-selection-container mx-auto py-10" id="device_charting" hidden>
+            <h2 class="chart-selection-title text-3xl font-bold text-center mb-8">Data Visualization</h2>
+            
+            <div class="chart-type-selector mb-6">
+                <label for="chartType" class="block text-lg font-semibold mb-2">Select Chart Type:</label>
+                <select id="chartType" class="form-select mb-4">
+                    <option value="line">Line Chart</option>
+                    <option value="bar">Bar Chart</option>
+                    <option value="pie">Pie Chart</option>
+                    <!-- Add more chart types as needed -->
+                </select>
+            </div>
+        
+            <div class="data-point-selector mb-6">
+                <h3 class="sub-title text-2xl font-semibold mb-4">Select Data Points:</h3>
+                <!-- Checkboxes for each data point -->
+                <label><input type="checkbox" name="dataPoints" value="soilMoisture"> Soil Moisture</label><br>
+                <label><input type="checkbox" name="dataPoints" value="humidity"> Humidity</label><br>
+                <label><input type="checkbox" name="dataPoints" value="oxygen"> Oxygen Content</label><br>
+                <label><input type="checkbox" name="dataPoints" value="carbonDioxide"> Carbon Dioxide Content</label><br>
+                <label><input type="checkbox" name="dataPoints" value="nitrogen"> Nitrogen Content</label><br>
+                <label><input type="checkbox" name="dataPoints" value="temperature"> Temperature</label><br>
+                <label><input type="checkbox" name="dataPoints" value="windSpeed"> Wind Speed</label><br>
+                <label><input type="checkbox" name="dataPoints" value="precipitation"> Precipitation</label><br>
+                <!-- Add more data points as needed -->
+            </div>
+        
+            <!-- <button id="generateChart" class="generate-chart-button">Generate Chart</button> -->
+            <button id="addChart"   class="submit-button" style="margin-top: 3%;" >Add Chart to Dashboard</button>
+    
+        </div>
+        
+        <div class="chart-dashboard mx-auto py-10"  id="device_visuals"  hidden >
+            <h2 class="dashboard-title text-3xl font-bold text-center mb-8">Dashboard</h2>
+            <div id="chartsContainer"></div>
+        </div>
+    </div>
+    
+
+
+
+
+    
+    
+    
+    
+
+    <footer class="bg-gray-800 p-4 text-center">
+        <p>&copy; 2023 InQube Innoventures</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const generatedKey = generateRandomKey();
+    document.getElementById('generatedKey').textContent = generatedKey;
+    document.getElementById('sampleJson').textContent = JSON.stringify({ "deviceKey": generatedKey, "data": "Your Data Here" }, null, 2);
+    document.getElementById('urlDeviceKey').textContent = generatedKey;
+});
+
+function generateRandomKey() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < 16; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+}
+
+
+
+
+function trigger_data() {
+    // Simulate server listening
+    setTimeout(() => {
+        document.getElementById('serverStatus').style.backgroundColor = '#4CAF50'; // Green indicates active listening
+        document.getElementById('statusText').textContent = 'Listening for data...';
+
+        // Simulated data reception
+        setTimeout(() => {
+            const receivedData = {
+                timestamp: new Date().toISOString(),
+                soilMoisture: `${(Math.random() * 100).toFixed(2)}%`,
+                humidity: `${(Math.random() * 100).toFixed(2)}%`,
+                airContent: {
+                    oxygen: `${(Math.random() * 100).toFixed(2)}%`,
+                    carbonDioxide: `${(Math.random() * 100).toFixed(2)}%`,
+                    nitrogen: `${(Math.random() * 100).toFixed(2)}%`
+                },
+                weather: {
+                    temperature: `${(20 + Math.random() * 15).toFixed(2)}°C`, // Simulating a temperature range
+                    windSpeed: `${(Math.random() * 15).toFixed(2)} km/h`,
+                    precipitation: `${(Math.random() * 10).toFixed(2)} mm`
+                }
+            };
+            document.getElementById('receivedData').textContent = JSON.stringify(receivedData, null, 2);
+            
+            document.getElementById('confirm_device_data_button').style.display = 'block';
+        }, 5000); // Simulate data reception after 5 seconds
+    }, 2000); // Simulate server readiness after 2 seconds
+}
+
+
+
+
+
+
+document.getElementById('addChart').addEventListener('click', function() {
+    const chartType = document.getElementById('chartType').value;
+    const selectedDataPoints = document.querySelectorAll('input[name="dataPoints"]:checked');
+    let dataPoints = Array.from(selectedDataPoints).map(checkbox => checkbox.value);
+
+    addChartToDashboard(chartType, dataPoints);
+});
+
+function addChartToDashboard(chartType, dataPoints) {
+    // Creating a container for each chart
+    const chartContainer = document.createElement('div');
+    chartContainer.className = 'chart-container relative bg-gray-800 p-4 rounded-lg';
+
+    // Creating a canvas for the chart
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    chartContainer.appendChild(canvas);
+
+    // Creating a delete button for the chart
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete Chart';
+    deleteButton.className = 'delete-chart-button absolute top-2 right-2 bg-red-500 text-white p-2 rounded';
+    deleteButton.onclick = function() {
+        chartContainer.remove();
+    };
+    chartContainer.appendChild(deleteButton);
+
+    // Append the chart container to the dashboard
+    document.getElementById('chartsContainer').appendChild(chartContainer);
+
+    // Call function to render chart
+    renderChart(chartType, dataPoints, ctx);
+}
+
+function renderChart(chartType, dataPoints, ctx) {
+    const data = generateRandomChartData(dataPoints);
+    const config = {
+        type: chartType,
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    // Render the chart using Chart.js
+    new Chart(ctx, config);
+}
+
+function generateRandomChartData(dataPoints) {
+    return {
+        labels: ['Sample 1', 'Sample 2', 'Sample 3'],
+        datasets: dataPoints.map(dataPoint => ({
+            label: dataPoint,
+            data: [Math.random() * 100, Math.random() * 100, Math.random() * 100],
+            backgroundColor: getRandomColor(),
+            borderColor: getRandomColor(),
+            borderWidth: 1
+        }))
+    };
+}
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+
+
+
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        document.getElementById('deviceSelectionContainer').style.display = 'none';
+        document.getElementById('device_info').style.display = 'block';
+
+    });
+});
+
+
+
+</script>
+</body>
+</html>
